@@ -164,3 +164,118 @@ footer {
     left: 0;
     color: #888;
 }
+
+/* Contact Grid Setup */
+.contact-grid {
+    display: flex;
+    justify-content: space-between;
+    gap: 80px;
+    margin: 60px auto;
+    max-width: 1100px;
+}
+
+.contact-info, .contact-form-container {
+    flex: 1;
+}
+
+/* Typography & Information Styling */
+.contact-info h1 {
+    font-size: 3.5rem;
+    line-height: 1;
+    margin-bottom: 24px;
+}
+
+.contact-intro {
+    font-size: 1.2rem;
+    color: #555;
+    margin-bottom: 40px;
+    line-height: 1.6;
+}
+
+.contact-method-list {
+    margin-bottom: 40px;
+}
+
+.method-item {
+    margin-bottom: 20px;
+}
+
+.method-item .label {
+    display: block;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    color: #888;
+    margin-bottom: 4px;
+}
+
+.method-item a, .method-item span:not(.label) {
+    font-size: 1.1rem;
+    text-decoration: none;
+    color: #000;
+}
+
+/* Form Styling */
+.modern-form {
+    background: #fdfdfd;
+    padding: 40px;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+.form-group {
+    margin-bottom: 24px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.form-group input, .form-group select, .form-group textarea {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+    background-color: #fff;
+    transition: border-color 0.2s;
+}
+
+.form-group input:focus, .form-group textarea:focus {
+    border-color: #000;
+    outline: none;
+}
+
+.cta-button-large {
+    width: 100%;
+    padding: 18px;
+    background-color: #000;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+
+.cta-button-large:hover {
+    opacity: 0.8;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 900px) {
+    .contact-grid {
+        flex-direction: column;
+        gap: 40px;
+    }
+    
+    .contact-info h1 {
+        font-size: 2.5rem;
+    }
+}
