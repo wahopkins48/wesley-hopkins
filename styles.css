@@ -82,3 +82,41 @@ footer {
     font-size: 12px;
     color: #999;
 }
+
+/* Create the side-by-side layout */
+.bio-flex-container {
+    display: flex;
+    align-items: flex-start;
+    gap: 40px; /* Space between image and text */
+    margin-top: 40px;
+}
+
+/* Style the image container */
+.bio-image {
+    flex: 1; /* Gives the image area consistent sizing */
+    max-width: 400px;
+}
+
+.bio-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px; /* Optional: rounds the corners slightly */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1); /* Optional: adds a soft shadow */
+}
+
+.bio-text {
+    flex: 2; /* Gives the text more room than the image */
+}
+
+/* Responsive adjustment for mobile phones */
+@media (max-width: 768px) {
+    .bio-flex-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .bio-image {
+        max-width: 100%;
+        margin-bottom: 20px;
+    }
+}
