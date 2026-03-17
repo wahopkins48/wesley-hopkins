@@ -20,17 +20,62 @@ body {
     align-items: center;
 }
 
+/* Update the Logo to have the "Neel-style" box */
 .logo {
-    font-family: var(--font-heading);
-    font-size: 28px;
-    font-weight: 700;
+    border: 1.5px solid #000; 
+    padding: 8px 15px;
+    font-family: 'Playfair Display', serif;
+    font-weight: bold;
+    display: inline-block;
+    line-height: 1;
 }
 
-.nav-links {
-    list-style: none;
+/* Base Nav Styling */
+.nav-container {
     display: flex;
-    gap: 20px;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
 }
+
+/* Hide Hamburger on Desktop */
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+/* The Mobile Dropdown Logic */
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block; /* Show hamburger icon */
+    }
+
+    .nav-links {
+        display: none; /* Hide links by default */
+        flex-direction: column;
+        position: absolute;
+        top: 70px; /* Adjust based on your header height */
+        right: 20px;
+        background: white;
+        border: 1px solid #000;
+        padding: 10px;
+        z-index: 10;
+        width: 150px;
+    }
+
+    /* When JS toggles this class, the menu appears */
+    .nav-links.active {
+        display: flex;
+    }
+
+    .nav-links li {
+        margin: 10px 0;
+    }
+}
+
 
 .nav-links a {
     text-decoration: none;
