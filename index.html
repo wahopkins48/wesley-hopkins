@@ -42,14 +42,19 @@
 <body class="x x-fonts-playfair-display">
     <div class="layout">
         <header class="header-section">
-            <nav class="nav-container">
-                <div class="logo">Wesley Hopkins</div>
-                <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
+      <nav class="nav-container">
+          <div class="logo">Wesley Hopkins</div>
+
+          <button class="menu-toggle" aria-label="Toggle Menu" onclick="toggleMenu()">
+              <i class="fa-solid fa-bars"></i>
+          </button>
+
+          <ul class="nav-links" id="navLinks">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="about.html">About</a></li>
+              <li><a href="contact.html">Contact</a></li>
             </ul>
-            </nav>
+        </nav>
             
             <div class="hero-section">
                 <div class="hero-text">
