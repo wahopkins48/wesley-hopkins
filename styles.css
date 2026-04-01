@@ -145,7 +145,7 @@ body {
 }
 
 .bio-text {
-    font-size: 18px;
+    font-size: 16px;
     color: var(--text-grey);
 }
 
@@ -231,7 +231,7 @@ body {
 
 /* --- LISTS & TYPOGRAPHY --- */
 
-.bio-text ul {
+. ul {
     list-style: none;
     padding-left: 0;
 }
