@@ -184,12 +184,20 @@
         <strong>Wesley Hopkins</strong>
         Digital Visibility Architect
       </a>
-      <nav class="nav-links" aria-label="Primary navigation">
-        <a href="https://wesleyhopkins.digital" target="_blank" rel="noopener noreferrer">Home</a>
-        <a href="#posts">Posts</a>
-        <a href="#about">About</a>
-        <a href="#topics">Topics</a>
-      </nav>
+            <nav class="nav-container">
+                <div class="logo">Wesley Hopkins</div>
+
+                <button class="menu-toggle" aria-label="Toggle Menu" onclick="toggleMenu()">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="https://wesleyhopkins.digital">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="/blog/index.html">Blog</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
     </div>
   </header>
 
