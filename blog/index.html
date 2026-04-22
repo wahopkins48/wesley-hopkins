@@ -1,1 +1,323 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wesley Hopkins Blog</title>
+  <meta name="description" content="The blog of Wesley Hopkins — reflections on digital visibility, literature, food, work, and whatever else deserves a page." />
+  <style>
+    :root {
+      --bg: #f7f4ee;
+      --surface: #fffdf9;
+      --surface-2: #efe8de;
+      --text: #171717;
+      --muted: #5f5a52;
+      --line: #d8d0c4;
+      --accent: #7a4b2c;
+      --accent-dark: #5f3820;
+      --max: 1120px;
+      --radius: 14px;
+      --shadow: 0 10px 30px rgba(0,0,0,.05);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Georgia, 'Times New Roman', serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+    .container { width: min(calc(100% - 2rem), var(--max)); margin: 0 auto; }
+    .site-header {
+      position: sticky; top: 0; z-index: 10;
+      backdrop-filter: blur(10px);
+      background: rgba(247,244,238,.88);
+      border-bottom: 1px solid rgba(23,23,23,.08);
+    }
+    .nav {
+      display: flex; justify-content: space-between; align-items: center;
+      min-height: 72px; gap: 1rem;
+    }
+    .brand { font-size: 1rem; letter-spacing: .04em; text-transform: uppercase; }
+    .brand strong { display: block; font-size: 1.1rem; letter-spacing: 0; text-transform: none; }
+    .nav-links { display: flex; gap: 1.1rem; flex-wrap: wrap; font-size: .95rem; color: var(--muted); }
+    .nav-links a:hover { color: var(--text); }
+    .hero {
+      padding: 5rem 0 3rem;
+      border-bottom: 1px solid var(--line);
+    }
+    .hero-grid {
+      display: grid; grid-template-columns: 1.35fr .9fr; gap: 2rem; align-items: start;
+    }
+    .eyebrow {
+      display: inline-block;
+      font-size: .82rem; letter-spacing: .12em; text-transform: uppercase;
+      color: var(--muted); margin-bottom: 1rem;
+    }
+    h1 {
+      margin: 0 0 1rem; line-height: 1.05;
+      font-size: clamp(2.4rem, 6vw, 5.2rem);
+      font-weight: 500;
+    }
+    .lead {
+      font-size: 1.1rem; color: var(--muted); max-width: 62ch;
+    }
+    .hero-card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 1.25rem;
+      box-shadow: var(--shadow);
+    }
+    .hero-card h2 {
+      margin: 0 0 .75rem; font-size: 1.2rem;
+    }
+    .hero-card p { margin: 0 0 1rem; color: var(--muted); }
+    .button-row { display: flex; gap: .75rem; flex-wrap: wrap; }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      border: 1px solid var(--text);
+      padding: .85rem 1rem;
+      border-radius: 999px;
+      font-size: .95rem;
+      transition: .2s ease;
+      background: transparent;
+    }
+    .btn:hover { transform: translateY(-1px); }
+    .btn.primary {
+      background: var(--text); color: var(--surface); border-color: var(--text);
+    }
+    .btn.secondary {
+      border-color: var(--line); background: var(--surface);
+    }
+    section { padding: 2.5rem 0; }
+    .section-head {
+      display: flex; justify-content: space-between; align-items: end; gap: 1rem;
+      margin-bottom: 1.25rem; border-bottom: 1px solid var(--line); padding-bottom: .8rem;
+    }
+    .section-head h2 {
+      margin: 0; font-size: 1.8rem; font-weight: 500;
+    }
+    .section-head p { margin: 0; color: var(--muted); font-size: .95rem; }
+    .post-grid {
+      display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem;
+    }
+    .post-card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 1rem;
+      display: flex; flex-direction: column;
+      min-height: 100%;
+      transition: .2s ease;
+    }
+    .post-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow);
+      border-color: #c7bbab;
+    }
+    .meta {
+      font-size: .8rem; text-transform: uppercase; letter-spacing: .08em;
+      color: var(--muted); margin-bottom: .75rem;
+    }
+    .post-card h3 {
+      margin: 0 0 .75rem; line-height: 1.18; font-size: 1.3rem; font-weight: 500;
+    }
+    .excerpt { color: var(--muted); margin: 0 0 1rem; flex: 1; }
+    .readmore {
+      display: inline-flex; align-items: center; gap: .45rem;
+      font-size: .95rem; color: var(--accent-dark);
+    }
+    .readmore span { transition: transform .2s ease; }
+    .post-card:hover .readmore span { transform: translateX(3px); }
+    .topics {
+      display: flex; gap: .6rem; flex-wrap: wrap;
+    }
+    .chip {
+      border: 1px solid var(--line);
+      padding: .5rem .8rem;
+      border-radius: 999px;
+      background: var(--surface);
+      font-size: .9rem;
+      color: var(--muted);
+    }
+    .newsletter {
+      display: grid; grid-template-columns: 1fr auto; gap: 1rem;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 1.25rem;
+      align-items: center;
+    }
+    .newsletter p { margin: .35rem 0 0; color: var(--muted); }
+    .site-footer {
+      border-top: 1px solid var(--line);
+      padding: 2rem 0 3rem;
+      color: var(--muted);
+      font-size: .95rem;
+    }
+    .footer-row {
+      display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap;
+    }
+    .utility-note {
+      font-size: .92rem; color: var(--muted); margin-top: .75rem;
+    }
+    @media (max-width: 960px) {
+      .hero-grid, .post-grid, .newsletter { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 640px) {
+      .nav { align-items: flex-start; padding: .9rem 0; }
+      .nav-links { font-size: .9rem; }
+      .hero { padding-top: 3.5rem; }
+      .section-head { align-items: start; flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="https://wesleyhopkins.digital" target="_blank" rel="noopener noreferrer">
+        <strong>Wesley Hopkins</strong>
+        Digital Visibility Architect
+      </a>
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a href="https://wesleyhopkins.digital" target="_blank" rel="noopener noreferrer">Home</a>
+        <a href="#posts">Posts</a>
+        <a href="#about">About</a>
+        <a href="#topics">Topics</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow">Wesley Hopkins / Blog</span>
+          <h1>This is my blog.</h1>
+          <p class="lead">I’m Wesley, a Digital Visibility Architect with a Master of Arts in Rhetoric and Composition. We all think in unique ways. Humans are interesting. Period. I believe everyone should have a blog. This is mine.</p>
+          <p class="lead">I write about everything — the work I do, the literature I read, the food I eat, and whatever else seems worth pinning to the page.</p>
+        </div>
+        <aside class="hero-card" aria-label="Blog overview">
+          <h2>What you’ll find here</h2>
+          <p>Essays, practical notes, search insights, reading reflections, and everyday observations — organized simply and built to be readable.</p>
+          <div class="button-row">
+            <a class="btn primary" href="#posts">Read the posts</a>
+            <a class="btn secondary" href="https://wesleyhopkins.digital" target="_blank" rel="noopener noreferrer">Visit homepage</a>
+          </div>
+          <p class="utility-note">Replace the sample posts below with your real posts or wire this into your generator later.</p>
+        </aside>
+      </div>
+    </section>
+
+    <section id="posts">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>Recent Posts</h2>
+            <p>Simple cards, clear metadata, no unnecessary stuff.</p>
+          </div>
+        </div>
+
+        <div class="post-grid">
+          <article class="post-card">
+            <div class="meta">Essay / April 2026</div>
+            <h3><a href="/blog/post-slug-1/">Why digital visibility is not the same thing as traffic</a></h3>
+            <p class="excerpt">A short essay on why being seen in search, AI answers, and branded discovery matters more than chasing raw clicks.</p>
+            <a class="readmore" href="/blog/post-slug-1/">Read post <span>→</span></a>
+          </article>
+
+          <article class="post-card">
+            <div class="meta">Notes / April 2026</div>
+            <h3><a href="/blog/post-slug-2/">What I underlined this week</a></h3>
+            <p class="excerpt">A reading note format for literature, rhetoric, and anything else worth revisiting after the first pass.</p>
+            <a class="readmore" href="/blog/post-slug-2/">Read post <span>→</span></a>
+          </article>
+
+          <article class="post-card">
+            <div class="meta">Food / April 2026</div>
+            <h3><a href="/blog/post-slug-3/">Lunch, memory, and why simple meals matter</a></h3>
+            <p class="excerpt">A personal post about food, routine, and the quiet structures that keep a working life from becoming abstract.</p>
+            <a class="readmore" href="/blog/post-slug-3/">Read post <span>→</span></a>
+          </article>
+
+          <article class="post-card">
+            <div class="meta">Work / March 2026</div>
+            <h3><a href="/blog/post-slug-4/">The rhetoric behind search intent</a></h3>
+            <p class="excerpt">Search queries are never just keywords. They are compressed forms of need, motive, urgency, and uncertainty.</p>
+            <a class="readmore" href="/blog/post-slug-4/">Read post <span>→</span></a>
+          </article>
+
+          <article class="post-card">
+            <div class="meta">Personal / March 2026</div>
+            <h3><a href="/blog/post-slug-5/">Why everyone should keep a blog</a></h3>
+            <p class="excerpt">Not because everyone needs a personal brand, but because everyone needs a place to think in public now and then.</p>
+            <a class="readmore" href="/blog/post-slug-5/">Read post <span>→</span></a>
+          </article>
+
+          <article class="post-card">
+            <div class="meta">Archive / March 2026</div>
+            <h3><a href="/blog/post-slug-6/">The small systems that keep me writing</a></h3>
+            <p class="excerpt">A practical breakdown of low-friction habits, simple publishing structure, and keeping the work moving.</p>
+            <a class="readmore" href="/blog/post-slug-6/">Read post <span>→</span></a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>About the Blog</h2>
+            <p>Personal, professional, and a little bit of everything else.</p>
+          </div>
+        </div>
+        <p>This blog is the writing home for Wesley Hopkins. It sits alongside the main site at wesleyhopkins.digital and gives more room for essays, observations, experiments, and posts that do not fit neatly into one category.</p>
+      </div>
+    </section>
+
+    <section id="topics">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>Topics</h2>
+            <p>A simple way to guide people into what interests them most.</p>
+          </div>
+        </div>
+        <div class="topics">
+          <a class="chip" href="/blog/tag/seo/">SEO</a>
+          <a class="chip" href="/blog/tag/geo/">GEO</a>
+          <a class="chip" href="/blog/tag/literature/">Literature</a>
+          <a class="chip" href="/blog/tag/food/">Food</a>
+          <a class="chip" href="/blog/tag/work/">Work</a>
+          <a class="chip" href="/blog/tag/personal/">Personal</a>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="newsletter">
+          <div>
+            <strong>One clean CTA.</strong>
+            <p>If you later want an email list, this block can become your signup section or a featured post module.</p>
+          </div>
+          <a class="btn primary" href="mailto:hello@wesleyhopkins.digital">Get in touch</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-row">
+      <div>© 2026 Wesley Hopkins</div>
+      <div><a href="https://wesleyhopkins.digital" target="_blank" rel="noopener noreferrer">wesleyhopkins.digital</a></div>
+    </div>
+  </footer>
+</body>
+</html>
